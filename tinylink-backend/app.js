@@ -46,8 +46,8 @@ app.get("/:code", async (req, res, next) => {
 });
 
 // Unknown Routes
-app.all(/any.*/, (req, res, next) => {
-  next(new AppError(404, `Cannot find ${req.originalUrl}`));
+app.all(`/{*any}`, (req, res, next) => {
+  next(new AppError(404, `Cannot find ${req.originalUrl} on this server!`));
 });
 
 // Global Error Handler
